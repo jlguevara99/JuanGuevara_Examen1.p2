@@ -12,7 +12,56 @@ import java.util.ArrayList;
  * @author HP
  */
 public class Proyecto {
+
     private String nombre;
     private int commits;
-    private ArrayList<Archivo>lista = new ArrayList();
+    private ArrayList<Archivo> lista = new ArrayList();
+    private ArrayList<Usuario> collab;
+
+    public Proyecto() {
+    }
+
+    public Proyecto(String nombre, int commits,ArrayList<Usuario> collab) {
+        this.nombre = nombre;
+        this.commits = commits;
+        this.collab = collab;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getCommits() {
+        return commits;
+    }
+
+    public void setCommits(int commits) {
+        this.commits = commits;
+    }
+
+    public ArrayList<Archivo> getLista() {
+        return lista;
+    }
+
+    public void setLista(ArrayList<Archivo> lista) {
+        this.lista = lista;
+    }
+
+    public ArrayList<Usuario> getCollab() {
+        return collab;
+    }
+
+    public void setCollab(ArrayList<Usuario> collab) {
+        this.collab = collab;
+    }
+
+    @Override
+    public String toString() {
+        return "Proyecto{" + "nombre=" + nombre + ", commits=" + commits + ", lista=" + lista + '}';
+    }
+
 }

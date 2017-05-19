@@ -10,5 +10,32 @@ package examen1lab_juanguevara;
  * @author HP
  */
 public class A_Texto extends Archivo {
+    private String contenido;
+
+    public A_Texto(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public A_Texto(String contenido, String nombre, int tamaño) {
+        super(nombre, tamaño);
+        this.contenido = contenido;
+    }
+
+    public A_Texto() {
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+"A_Texto{" + "contenido=" + contenido + '}';
+    }
+    
     
 }

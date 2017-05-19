@@ -5,6 +5,8 @@
  */
 package examen1lab_juanguevara;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author HP
@@ -15,6 +17,7 @@ public class Usuario {
     private String profesion;
     private String username;
     private String pass;
+    private ArrayList<Proyecto> lista = new ArrayList();
 
     public Usuario() {
     }
@@ -65,6 +68,14 @@ public class Usuario {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public ArrayList<Proyecto> getLista() {
+        return lista;
+    }
+
+    public void setLista(ArrayList<Proyecto> lista) {
+        this.lista = lista;
     }
 
     @Override
