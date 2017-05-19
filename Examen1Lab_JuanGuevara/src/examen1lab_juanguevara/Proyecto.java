@@ -61,7 +61,7 @@ public class Proyecto {
 
     @Override
     public String toString() {
-        return "Proyecto{" + "nombre=" + nombre + ", commits=" + commits + ", lista=" + archivos + '}';
+        return "Proyecto---" + "Nombre: " + nombre + ", Commits: " + commits + ", Lista=" + archivos ;
     }
 
 }

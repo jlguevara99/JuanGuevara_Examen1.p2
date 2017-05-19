@@ -119,6 +119,8 @@ public class Examen1Lab_JuanGuevara {
                             if (usuarios.get(i).getUsername().equals(usuario)) {
                                 esta = true;
                                 posicion = i;
+                            } else {
+                                System.out.println("Usuario no existe");
                             }
 
                         }
@@ -130,6 +132,8 @@ public class Examen1Lab_JuanGuevara {
                         if (contra.equals(usuarios.get(posicion).getPass())) {
                             System.out.println("HA INGRESADO A SU USUARIO");
                             esta = true;
+                        } else {
+                            System.out.println("Password incorrecta! ♠");
                         }
                     } while (esta == false);
                     char opcion2 = 's';
@@ -156,16 +160,36 @@ public class Examen1Lab_JuanGuevara {
                                     System.out.println("Ingrese el nombre del proyecto: ");
                                     String nom = sc.next();
                                     char seguir = 's';
+                                    ArrayList<Integer> num = new ArrayList();
                                     ArrayList<Usuario> collab = new ArrayList();
                                     do {
-
+                                        int posi = -1;
+                                        boolean v = false;
                                         System.out.println("Ingrese la posicion del usuario que quiere agregar como colaborador");
-                                        int posi = sc.nextInt();
+
+                                        for (int i = 0; i < num.size(); i++) {
+                                            if (posi == num.get(i)) {
+                                                System.out.println("Ya habia ingresado este usuario");
+                                                v = true;
+                                            }
+                                        }
+                                        posi = sc.nextInt();
+
+                                        num.add(posi);
+                                        
+
+                                        if (posi == posicion) {
+                                            System.out.println("No se puede elegir uno mismo");
+                                            continue;
+                                        }
+                                        if (v) {
+                                            continue;
+                                        }
                                         collab.add(usuarios.get(posi));
                                         System.out.println("Desea ingresar otro colaborador[s/n]");
                                         seguir = sc.next().charAt(0);
-                                        usuarios.get(posicion).getLista().add(new Proyecto(nom,0,collab));
-                                    } while (seguir != 's');
+                                        usuarios.get(posicion).getLista().add(new Proyecto(nom, 0, collab));
+                                    } while (seguir == 's');
                                     usuarios.get(posicion).getLista().add(new Proyecto(nom, 0, collab));
 
                                 } catch (Exception e) {
@@ -211,15 +235,15 @@ public class Examen1Lab_JuanGuevara {
                                                             System.out.println("Ingrese lo que quiere ingresar: ");
                                                             sc.nextLine();
                                                             String cadena = sc.nextLine();
-                                                            usuarios.get(posicion).getLista().get(proyecto).getArch().add(new A_Texto(cadena,n,tam));
+                                                            usuarios.get(posicion).getLista().get(proyecto).getArch().add(new A_Texto(cadena, n, tam));
                                                             break;
                                                     }
-                                                }else{
-                                                    
+                                                } else {
+
                                                 }
                                                 System.out.println("Desea seguir[s/n]");
                                                 seguir = sc.next().charAt(0);
-                                            } while (seguir != 's');
+                                            } while (seguir == 's');
 
                                             break;
                                         case 'b':
@@ -227,11 +251,11 @@ public class Examen1Lab_JuanGuevara {
                                             int pos = sc.nextInt();
                                             if (usuarios.get(posicion).getLista().get(proyecto).getArch().get(pos) instanceof Carpeta) {
                                                 System.out.println(usuarios.get(posicion).getLista().get(proyecto).getArch().get(pos));
-                                            }else{
+                                            } else {
                                                 System.out.println("Ingrese nuevo archivo de texto");
                                                 sc.nextLine();
                                                 String contenido = sc.nextLine();
-                                                ((A_Texto)usuarios.get(posicion).getLista().get(proyecto).getArch().get(pos)).setContenido(contenido);
+                                                ((A_Texto) usuarios.get(posicion).getLista().get(proyecto).getArch().get(pos)).setContenido(contenido);
                                             }
                                             break;
                                         case 'c':
@@ -248,7 +272,10 @@ public class Examen1Lab_JuanGuevara {
                                             System.out.println("Ingrese el comando: ");
                                             String comando = sc.next();
                                             if (comando.equals("meow push")) {
-                                                usuarios.get(posicion).getLista().get(proyecto).setCommits(usuarios.get(posicion).getLista().get(proyecto).getCommits()+1);
+                                                for (int i = 0; i < usuarios.get(posicion).getLista().get(proyecto).getCollab().size(); i++) {
+                                                }
+
+                                                usuarios.get(posicion).getLista().get(proyecto).setCommits(usuarios.get(posicion).getLista().get(proyecto).getCommits() + 1);
                                             }
 
                                     }
@@ -270,10 +297,11 @@ public class Examen1Lab_JuanGuevara {
                                     int posiP = sc.nextInt();
                                     System.out.println("Hay " + usuarios.get(posicion).getLista().get(posiP).getCommits());
                                 } catch (Exception e) {
+                                    System.out.println("Incorrecto");
                                 }
                                 break;
                         }
-                        
+
                     } while (opcion2 != 'f');
 
                     break;

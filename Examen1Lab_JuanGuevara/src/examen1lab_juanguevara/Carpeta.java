@@ -36,7 +36,7 @@ public class Carpeta extends Archivo{
 
     @Override
     public String toString() {
-        return super.toString()+"Carpeta{" + "archivos=" + archivos + '}';
+        return super.toString()+" Carpeta--" + "Archivos[" + archivos + ']';
     }
     
 }

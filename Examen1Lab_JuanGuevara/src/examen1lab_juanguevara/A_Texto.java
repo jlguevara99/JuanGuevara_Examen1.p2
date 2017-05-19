@@ -34,7 +34,7 @@ public class A_Texto extends Archivo {
 
     @Override
     public String toString() {
-        return super.toString()+"A_Texto{" + "contenido=" + contenido + '}';
+        return super.toString()+"Archivo de texto" + " Contenido: " + contenido ;
     }
     
     
