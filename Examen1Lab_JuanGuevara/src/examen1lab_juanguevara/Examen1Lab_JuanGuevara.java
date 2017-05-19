@@ -164,6 +164,7 @@ public class Examen1Lab_JuanGuevara {
                                         collab.add(usuarios.get(posi));
                                         System.out.println("Desea ingresar otro colaborador[s/n]");
                                         seguir = sc.next().charAt(0);
+                                        usuarios.get(posicion).getLista().add(new Proyecto(nom,0,collab));
                                     } while (seguir != 's');
                                     usuarios.get(posicion).getLista().add(new Proyecto(nom, 0, collab));
 
@@ -172,12 +173,87 @@ public class Examen1Lab_JuanGuevara {
                                 }
                                 break;
                             case 'b':
-                                System.out.println("Modificar Archivo");
-                                for (int i = 0; i < usuarios.get(posicion).getLista().size(); i++) {
-                                    System.out.println(i+". "+usuarios.get(posicion).getLista().get(i));
-                                }
-                                
-                                
+                                System.out.println("Modificar Proyecto");
+                                char opcion3 = 's';
+                                do {
+                                    for (int i = 0; i < usuarios.get(posicion).getLista().size(); i++) {
+                                        System.out.println(i + ". " + usuarios.get(posicion).getLista().get(i));
+                                    }
+                                    System.out.println("Ingrese el proyecto que quiere modificar: ");
+                                    int proyecto = sc.nextInt();
+                                    System.out.println("a. Crear un archivo");
+                                    System.out.println("b. Modificar archivo");
+                                    System.out.println("c. Eliminar archivo");
+                                    System.out.println("d. Ingresar comando");
+                                    opcion3 = sc.next().charAt(0);
+                                    switch (opcion3) {
+                                        case 'a':
+                                            char seguir = 's';
+                                            do {
+                                                if (usuarios.get(posicion).getLista().isEmpty()) {
+                                                    System.out.println("Ingrese que tipo de archivo quiere agregar");
+                                                    System.out.println("a. Carpeta");
+                                                    System.out.println("b. Archivo de texto");
+                                                    char opcion4 = sc.next().charAt(posicion);
+                                                    switch (opcion4) {
+                                                        case 'a':
+                                                            System.out.println("Ingrese nombre: ");
+                                                            String n = sc.next();
+                                                            System.out.println("Ingrese tamaño: ");
+                                                            int tam = sc.nextInt();
+                                                            usuarios.get(posicion).getLista().get(proyecto).getArch().add(new Carpeta(new ArrayList(), n, tam));
+                                                            break;
+                                                        case 'b':
+                                                            System.out.println("Ingrese nombre: ");
+                                                            n = sc.next();
+                                                            System.out.println("Ingrese tamaño: ");
+                                                            tam = sc.nextInt();
+                                                            System.out.println("Ingrese lo que quiere ingresar: ");
+                                                            sc.nextLine();
+                                                            String cadena = sc.nextLine();
+                                                            usuarios.get(posicion).getLista().get(proyecto).getArch().add(new A_Texto(cadena,n,tam));
+                                                            break;
+                                                    }
+                                                }else{
+                                                    
+                                                }
+                                                System.out.println("Desea seguir[s/n]");
+                                                seguir = sc.next().charAt(0);
+                                            } while (seguir != 's');
+
+                                            break;
+                                        case 'b':
+                                            System.out.println("Ingrese la posicion del archivo");
+                                            int pos = sc.nextInt();
+                                            if (usuarios.get(posicion).getLista().get(proyecto).getArch().get(pos) instanceof Carpeta) {
+                                                System.out.println(usuarios.get(posicion).getLista().get(proyecto).getArch().get(pos));
+                                            }else{
+                                                System.out.println("Ingrese nuevo archivo de texto");
+                                                sc.nextLine();
+                                                String contenido = sc.nextLine();
+                                                ((A_Texto)usuarios.get(posicion).getLista().get(proyecto).getArch().get(pos)).setContenido(contenido);
+                                            }
+                                            break;
+                                        case 'c':
+                                            System.out.println("Eliminar usuario");
+                                            try {
+                                                System.out.println("Ingrese la posicion del archivo");
+                                                int posisao = sc.nextInt();
+                                                usuarios.get(posicion).getLista().get(proyecto).getArch().remove(posisao);
+                                            } catch (Exception e) {
+                                                System.out.println("Valor incorrecto");
+                                            }
+                                            break;
+                                        case 'd':
+                                            System.out.println("Ingrese el comando: ");
+                                            String comando = sc.next();
+                                            if (comando.equals("meow push")) {
+                                                usuarios.get(posicion).getLista().get(proyecto).setCommits(usuarios.get(posicion).getLista().get(proyecto).getCommits()+1);
+                                            }
+
+                                    }
+                                } while (opcion != 'e');
+
                                 break;
                             case 'c':
                                 try {
@@ -197,7 +273,8 @@ public class Examen1Lab_JuanGuevara {
                                 }
                                 break;
                         }
-                    } while (opcion2 != 'e');
+                        
+                    } while (opcion2 != 'f');
 
                     break;
 

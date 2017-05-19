@@ -15,7 +15,7 @@ public class Proyecto {
 
     private String nombre;
     private int commits;
-    private ArrayList<Archivo> lista = new ArrayList();
+    private ArrayList<Archivo> archivos = new ArrayList();
     private ArrayList<Usuario> collab;
 
     public Proyecto() {
@@ -43,12 +43,12 @@ public class Proyecto {
         this.commits = commits;
     }
 
-    public ArrayList<Archivo> getLista() {
-        return lista;
+    public ArrayList<Archivo> getArch() {
+        return archivos;
     }
 
-    public void setLista(ArrayList<Archivo> lista) {
-        this.lista = lista;
+    public void setArch(ArrayList<Archivo> lista) {
+        this.archivos = lista;
     }
 
     public ArrayList<Usuario> getCollab() {
@@ -61,7 +61,7 @@ public class Proyecto {
 
     @Override
     public String toString() {
-        return "Proyecto{" + "nombre=" + nombre + ", commits=" + commits + ", lista=" + lista + '}';
+        return "Proyecto{" + "nombre=" + nombre + ", commits=" + commits + ", lista=" + archivos + '}';
     }
 
 }
